@@ -96,12 +96,12 @@ Endpoints:
     Public-Port-Name:  EXTRA_PROXY_PORT
     Mappings:
       - Frontend:      "/"
-        Backend:       ""
-  - Private-IP-Name:   MGMT_IP
+        Backend:       "/"
+  - Private-IP-Name:   IP
     Private-Port-Name: MGMT_PORT
     Private-Port:      15001
     Public-Port-Name:  MGMT_PROXY_PORT
     Mappings:
-      - Frontend:      ""
-        Backend:       ""
+      - Frontend:      "/extra"
+        Backend:       "/extra"
 
