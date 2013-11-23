@@ -2,11 +2,10 @@ Name: diy
 Cartridge-Short-Name: DIY
 Display-Name: Do-It-Yourself 0.1
 Description: "The extra-port Do-It-Yourself (DIY) application type is a blank slate for trying unsupported languages, frameworks, and middleware on OpenShift. This extension of the standard DIY cartridge exposes an extra port in addition to the one used for web access, which can be used for any protocol."
-Version: '0.1'
+Version: '0.2'
 License: "ASL 2.0"
 License-Url: http://www.apache.org/licenses/LICENSE-2.0.txt
-Source-Url: git@github.com:tarrantmarshall/diy-extra-port-cartridge.git
-Cartridge-Version: 0.0.1
+Cartridge-Version: 0.0.2
 Cartridge-Vendor: tarrantmarshall
 Vendor: sosiouxme
 Categories:
@@ -34,7 +33,13 @@ Cart-Data:
   - Key: OPENSHIFT_DIY_EXTRA_PORT
     Type: environment
     Description: "Internal port for something other than web-framework to bind to."
+  - Key: OPENSHIFT_DIY_MGMT_PORT
+    Type: environment
+    Description: "Internal port for something other than web-framework to bind to."
   - Key: OPENSHIFT_DIY_EXTRA_PROXY_PORT
+    Type: environment
+    Description: "External node port to reach non-web-framework port."
+  - Key: OPENSHIFT_DIY_MGT_PROXY_PORT
     Type: environment
     Description: "External node port to reach non-web-framework port."
   - Key: OPENSHIFT_APP_DNS
@@ -79,7 +84,7 @@ Endpoints:
     Private-Port:      8080
     Public-Port-Name:  PROXY_PORT
     Mappings:
-      - Frontend:      ""
+      - Frontend:      "ui"
         Backend:       ""
         Options:       { websocket: true }
       - Frontend:      "/health"
@@ -89,3 +94,14 @@ Endpoints:
     Private-Port-Name: EXTRA_PORT
     Private-Port:      15000
     Public-Port-Name:  EXTRA_PROXY_PORT
+    Mappings:
+      - Frontend:      "api"
+        Backend:       ""
+  - Private-IP-Name:   MGMT_IP
+    Private-Port-Name: MGMT_PORT
+    Private-Port:      15001
+    Public-Port-Name:  MGMT_PROXY_PORT
+    Mappings:
+      - Frontend:      ""
+        Backend:       ""
+
