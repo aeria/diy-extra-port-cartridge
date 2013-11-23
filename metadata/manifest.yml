@@ -5,8 +5,9 @@ Description: "The extra-port Do-It-Yourself (DIY) application type is a blank sl
 Version: '0.1'
 License: "ASL 2.0"
 License-Url: http://www.apache.org/licenses/LICENSE-2.0.txt
+Source-Url: git@github.com:tarrantmarshall/diy-extra-port-cartridge.git
 Cartridge-Version: 0.0.1
-Cartridge-Vendor: sosiouxme
+Cartridge-Vendor: tarrantmarshall
 Vendor: sosiouxme
 Categories:
   - web_framework
